@@ -104,10 +104,22 @@
 
         // Show main button
         Telegram.WebApp.MainButton.setParams({
-            text: 'Main Button'
+            text: 'Rent Energy'
         });
         Telegram.WebApp.MainButton.onClick(function () {
-            Telegram.WebApp.showAlert('Main Button was clicked')
+            //Telegram.WebApp.showAlert('Main Button was clicked')
+            Telegram.WebApp.showPopup({
+                title: 'Rent Enrgy',
+                message: 'Brutus Resources Rental',
+                buttons: [
+                    {id: 'link', type: 'default', text: 'Open brutus.finance'},
+                    {type: 'cancel'},
+                ]
+            }, function(btn) {
+                if (btn === 'link') {
+                    Telegram.WebApp.openLink('https://dapp.brutus.finance/?ebot');
+                }
+            });
         });	
         Telegram.WebApp.MainButton.show();
 
